@@ -1,7 +1,7 @@
 {
-  "name": "cantabria-360",
+  "name": "fuel-prices",
   "version": "1.0.0",
-  "description": "360º panorama tours for MyCantabria",
+  "description": "muestra una lista de gasolineras que me interesan y \nel precio del gasoil que sirven",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",
@@ -13,21 +13,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rchavarria/cantabria-360.git"
+    "url": "git+https://github.com/rchavarria/fuel-prices.git"
   },
   "keywords": [
-    "panorama",
-    "360",
-    "tour"
+    "fuel",
+    "price",
+    "gasolina",
+    "precio",
+    "gasoil"
   ],
   "author": "Rubén Chavarría",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rchavarria/cantabria-360/issues"
+    "url": "https://github.com/rchavarria/fuel-prices/issues"
   },
-  "homepage": "https://github.com/rchavarria/cantabria-360#readme",
+  "homepage": "https://github.com/rchavarria/fuel-prices#readme",
   "dependencies": {
-    "three": "^0.102.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.4",
