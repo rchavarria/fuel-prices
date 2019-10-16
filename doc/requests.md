@@ -42,3 +42,51 @@ El cuerpo de la petición es:
     "idTipoDestinatario": null
 }
 ```
+
+### Gasolineras de Guadalajara
+
+```json
+{
+    "tipoEstacion": "EESS",
+    "idProvincia": "19",
+    "idMunicipio": 20378,
+    "idProducto": 4,
+    "rotulo": "",
+    "eessEconomicas": false,
+    "conPlanesDescuento": false,
+    "horarioInicial": null,
+    "horarioFinal": null,
+    "calle": "",
+    "numero": "",
+    "codPostal": "",
+    "tipoVenta": null,
+    "idOperador": null,
+    "nombrePlan": "",
+    "idTipoDestinatario": null
+}
+```
+
+### Gasolineras de Pioz
+
+La única diferencia con la de Guadalajara es el `idMunicipio`.
+
+```json
+{
+    "tipoEstacion": "EESS",
+    "idProvincia": "19",
+    "idMunicipio": 20506,
+    "idProducto": 4,
+    "rotulo": "",
+    "eessEconomicas": false,
+    "conPlanesDescuento": false,
+    "horarioInicial": null,
+    "horarioFinal": null,
+    "calle": "",
+    "numero": "",
+    "codPostal": "",
+    "tipoVenta": null,
+    "idOperador": null,
+    "nombrePlan": "",
+    "idTipoDestinatario": null
+}
+```
