@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MyCantabria 360</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            /*background-color: #000000;*/
+            margin: 0;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        #info {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            color: #ffffff;
+            padding: 5px;
+            font-family: Monospace;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+        #tooltip {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            border: black solid 2px;
+            padding: 0.25em;
+        }
+
+        .inactive {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loading" class="inactive">
+    <h1>¡¡¡Cargando!!!</h1>
+</div>
+
+<div id="container"></div>
+<div id="info"></div>
+<div id="show-error"></div>
+<spen id="tooltip" class="inactive"></spen>
+
+<script src="dist/bundle.js"></script>
+
+</body>
+</html>
