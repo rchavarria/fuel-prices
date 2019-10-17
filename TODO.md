@@ -1,5 +1,9 @@
 # TODO list
 
+- [ ] Merge all stations, sort them by price, and filter my favorites
+- [ ] Request Guada and Pioz stations
+- [ ] Filer my favorite Alcala stations
+- [ ] Sort Alcala stations by price
 - [ ] ~~Webpack, que modifique el index.html para incluir el bundle.js y evitar caches y eso~~
 
 # DONE list
