@@ -25,7 +25,8 @@ axios.post(targetUrl, body)
   .then(data => {
     const stations = data.estaciones
     console.log('hay estas estaciones', stations.length)
-    console.log('una estación tiene estas propiedades', Object.keys(stations[0]))
+    console.log('un registro de estación tiene estas propiedades', Object.keys(stations[0]))
+    console.log('una estación tiene estas propiedades', Object.keys(stations[0].estacion))
   })
   .catch(error => {
     console.log('error', error)
