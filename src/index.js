@@ -1,5 +1,3 @@
-console.log('Hook index.js')
-
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
 const body = {
   'tipoEstacion': 'EESS',
@@ -20,13 +18,15 @@ const body = {
   'idTipoDestinatario': null
 }
 
-fetch(targetUrl, {
-  method: 'post',
-  headers: {
-    'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(body)
-})
-  .then(res => res.json())
-  .then(res => console.log('result:', res))
+const axios = require('axios')
+
+axios.post(targetUrl, body)
+  .then(response => response.data)
+  .then(data => {
+    const stations = data.estaciones
+    console.log('hay estas estaciones', stations.length)
+    console.log('una estación tiene estas propiedades', Object.keys(stations[0]))
+  })
+  .catch(error => {
+    console.log('error', error)
+  })
