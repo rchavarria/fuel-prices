@@ -4,12 +4,10 @@
   "description": "muestra una lista de gasolineras que me interesan y \nel precio del gasoil que sirven",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack",
-    "build:prod": "webpack --mode=production",
     "lint": "standard --fix",
     "pretest": "npm run lint",
     "test": "node node_modules/jest/bin/jest.js",
-    "watch": "webpack --watch"
+    "stations": "babel-node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,11 +30,10 @@
     "axios": "^0.19.0"
   },
   "devDependencies": {
+    "@babel/node": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "jest": "^24.7.0",
     "path": "^0.12.7",
-    "standard": "^12.0.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "standard": "^12.0.1"
   }
 }
