@@ -1,8 +1,8 @@
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
 const body = {
   'tipoEstacion': 'EESS',
-  'idProvincia': '19',
-  'idMunicipio': 20378,
+  'idProvincia': '28',
+  'idMunicipio': 35174,
   'idProducto': 4,
   'rotulo': '',
   'eessEconomicas': false,
@@ -20,13 +20,20 @@ const body = {
 
 const axios = require('axios')
 
+function sortByPrice (left, right) {
+  return left.precio - right.precio
+}
+
 axios.post(targetUrl, body)
   .then(response => response.data)
-  .then(data => {
-    const stations = data.estaciones
-    console.log('hay estas estaciones', stations.length)
-    console.log('un registro de estación tiene estas propiedades', Object.keys(stations[0]))
-    console.log('una estación tiene estas propiedades', Object.keys(stations[0].estacion))
+  .then(data => data.estaciones)
+  .then(stations => {
+    const sorted = stations.sort(sortByPrice)
+    console.log('Hay', stations.length, 'estaciones')
+
+    sorted.forEach(station => {
+      console.log('Estación', station.estacion.rotulo, 'en', station.estacion.direccion, 'tiene un precio de', station.precio)
+    })
   })
   .catch(error => {
     console.log('error', error)
