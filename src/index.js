@@ -103,8 +103,8 @@ Promise.all([
   requestStations(piozStationsRequestBody)
 ])
   .then(allStations => allStations.flat())
-  .then(stations => stations.sort(sortByPrice))
   .then(stations => stations.filter(filterFavourites))
+  .then(stations => stations.sort(sortByPrice))
   .then(log)
   .catch(error => {
     console.log('error', error)
