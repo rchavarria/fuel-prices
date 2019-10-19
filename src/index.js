@@ -26,17 +26,33 @@ function sortByPrice (left, right) {
   return left.price - right.price
 }
 
+function filterFavourites (stationRecord) {
+  const favourites = [
+    3079, // Alcampo
+    2929, // Galp cerca del Alcampo
+    3067, // Galp Villamalea
+    4698, // Galp NII
+    4697, // Galp Mercadona Meco
+    12721, // Galp rotonda Fiesta
+  ]
+
+  return favourites.includes(stationRecord.station.id)
+}
+
+function log (stations) {
+  console.log('Hay', stations.length, 'estaciones')
+
+  stations.forEach(stationRecord => {
+    console.log('(', stationRecord.station.id, ') ', 'Estación', stationRecord.station.label, 'en', stationRecord.station.address, 'tiene un precio de', stationRecord.price)
+  })
+}
+
 axios.post(targetUrl, body)
   .then(response => response.data)
   .then(data => data.estaciones.map(StationRecord.fromRequest))
-  .then(stations => {
-    const sorted = stations.sort(sortByPrice)
-    console.log('Hay', stations.length, 'estaciones')
-
-    sorted.forEach(station => {
-      console.log('Estación', station.station.label, 'en', station.station.address, 'tiene un precio de', station.price)
-    })
-  })
+  .then(stations => stations.sort(sortByPrice))
+  .then(stations => stations.filter(filterFavourites))
+  .then(log)
   .catch(error => {
     console.log('error', error)
   })
