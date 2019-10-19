@@ -40,6 +40,25 @@ const guadaStationsRequestBody = {
   'idTipoDestinatario': null
 }
 
+const piozStationsRequestBody = {
+  'tipoEstacion': 'EESS',
+  'idProvincia': '19',
+  'idMunicipio': 20506,
+  'idProducto': 4,
+  'rotulo': '',
+  'eessEconomicas': false,
+  'conPlanesDescuento': false,
+  'horarioInicial': null,
+  'horarioFinal': null,
+  'calle': '',
+  'numero': '',
+  'codPostal': '',
+  'tipoVenta': null,
+  'idOperador': null,
+  'nombrePlan': '',
+  'idTipoDestinatario': null
+}
+
 function sortByPrice (left, right) {
   return left.price - right.price
 }
@@ -65,6 +84,14 @@ function filterFavouritesInGuadalajara (stationRecord) {
   return favourites.includes(stationRecord.station.id)
 }
 
+function filterFavouritesInPioz (stationRecord) {
+  const favourites = [
+    11591 // Repsol Pioz
+  ]
+
+  return favourites.includes(stationRecord.station.id)
+}
+
 function log (stations) {
   console.log('Hay', stations.length, 'estaciones')
 
@@ -75,6 +102,10 @@ function log (stations) {
 
 axios.post(targetUrl, alcalaStationsRequestBody)
   .then(response => response.data)
+  .then(data => {
+    console.log('Estaciones de Pioz')
+    return data
+  })
   .then(data => data.estaciones.map(StationRecord.fromRequest))
   .then(stations => stations.sort(sortByPrice))
   .then(stations => stations.filter(filterFavouritesInAlcala))
@@ -91,6 +122,21 @@ axios.post(targetUrl, guadaStationsRequestBody)
   })
   .then(data => data.estaciones.map(StationRecord.fromRequest))
   .then(stations => stations.sort(sortByPrice))
+  .then(stations => stations.filter(filterFavouritesInGuadalajara))
+  .then(log)
+  .catch(error => {
+    console.log('error', error)
+  })
+
+axios.post(targetUrl, piozStationsRequestBody)
+  .then(response => response.data)
+  .then(data => {
+    console.log('Estaciones de Pioz')
+    return data
+  })
+  .then(data => data.estaciones.map(StationRecord.fromRequest))
+  .then(stations => stations.sort(sortByPrice))
+  .then(stations => stations.filter(filterFavouritesInPioz))
   .then(log)
   .catch(error => {
     console.log('error', error)
