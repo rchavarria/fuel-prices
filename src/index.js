@@ -1,12 +1,30 @@
-// const axios = require('axios')
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-const body = {
+const alcalaStationsRequestBody = {
   'tipoEstacion': 'EESS',
   'idProvincia': '28',
   'idMunicipio': 35174,
+  'idProducto': 4,
+  'rotulo': '',
+  'eessEconomicas': false,
+  'conPlanesDescuento': false,
+  'horarioInicial': null,
+  'horarioFinal': null,
+  'calle': '',
+  'numero': '',
+  'codPostal': '',
+  'tipoVenta': null,
+  'idOperador': null,
+  'nombrePlan': '',
+  'idTipoDestinatario': null
+}
+
+const guadaStationsRequestBody = {
+  'tipoEstacion': 'EESS',
+  'idProvincia': '19',
+  'idMunicipio': 20378,
   'idProducto': 4,
   'rotulo': '',
   'eessEconomicas': false,
@@ -26,14 +44,22 @@ function sortByPrice (left, right) {
   return left.price - right.price
 }
 
-function filterFavourites (stationRecord) {
+function filterFavouritesInAlcala (stationRecord) {
   const favourites = [
     3079, // Alcampo
     2929, // Galp cerca del Alcampo
     3067, // Galp Villamalea
     4698, // Galp NII
     4697, // Galp Mercadona Meco
-    12721, // Galp rotonda Fiesta
+    12721 // Galp rotonda Fiesta
+  ]
+
+  return favourites.includes(stationRecord.station.id)
+}
+
+function filterFavouritesInGuadalajara (stationRecord) {
+  const favourites = [
+    8292 // Galp en rotonda de la bici
   ]
 
   return favourites.includes(stationRecord.station.id)
@@ -47,11 +73,24 @@ function log (stations) {
   })
 }
 
-axios.post(targetUrl, body)
+axios.post(targetUrl, alcalaStationsRequestBody)
   .then(response => response.data)
   .then(data => data.estaciones.map(StationRecord.fromRequest))
   .then(stations => stations.sort(sortByPrice))
-  .then(stations => stations.filter(filterFavourites))
+  .then(stations => stations.filter(filterFavouritesInAlcala))
+  .then(log)
+  .catch(error => {
+    console.log('error', error)
+  })
+
+axios.post(targetUrl, guadaStationsRequestBody)
+  .then(response => response.data)
+  .then(data => {
+    console.log('Estaciones de Guada')
+    return data
+  })
+  .then(data => data.estaciones.map(StationRecord.fromRequest))
+  .then(stations => stations.sort(sortByPrice))
   .then(log)
   .catch(error => {
     console.log('error', error)
