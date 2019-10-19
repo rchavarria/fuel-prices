@@ -63,29 +63,20 @@ function sortByPrice (left, right) {
   return left.price - right.price
 }
 
-function filterFavouritesInAlcala (stationRecord) {
+function filterFavourites (stationRecord) {
   const favourites = [
+    // Alcala
     3079, // Alcampo
     2929, // Galp cerca del Alcampo
     3067, // Galp Villamalea
     4698, // Galp NII
     4697, // Galp Mercadona Meco
-    12721 // Galp rotonda Fiesta
-  ]
+    12721, // Galp rotonda Fiesta
 
-  return favourites.includes(stationRecord.station.id)
-}
+    // Guada
+    8292, // Galp en rotonda de la bici
 
-function filterFavouritesInGuadalajara (stationRecord) {
-  const favourites = [
-    8292 // Galp en rotonda de la bici
-  ]
-
-  return favourites.includes(stationRecord.station.id)
-}
-
-function filterFavouritesInPioz (stationRecord) {
-  const favourites = [
+    // Pioz
     11591 // Repsol Pioz
   ]
 
@@ -100,43 +91,20 @@ function log (stations) {
   })
 }
 
-axios.post(targetUrl, alcalaStationsRequestBody)
-  .then(response => response.data)
-  .then(data => {
-    console.log('Estaciones de Pioz')
-    return data
-  })
-  .then(data => data.estaciones.map(StationRecord.fromRequest))
-  .then(stations => stations.sort(sortByPrice))
-  .then(stations => stations.filter(filterFavouritesInAlcala))
-  .then(log)
-  .catch(error => {
-    console.log('error', error)
-  })
+function requestStations (requestParams) {
+  return axios.post(targetUrl, requestParams)
+    .then(response => response.data)
+    .then(data => data.estaciones.map(StationRecord.fromRequest))
+}
 
-axios.post(targetUrl, guadaStationsRequestBody)
-  .then(response => response.data)
-  .then(data => {
-    console.log('Estaciones de Guada')
-    return data
-  })
-  .then(data => data.estaciones.map(StationRecord.fromRequest))
+Promise.all([
+  requestStations(alcalaStationsRequestBody),
+  requestStations(guadaStationsRequestBody),
+  requestStations(piozStationsRequestBody)
+])
+  .then(allStations => allStations.flat())
+  .then(stations => stations.filter(filterFavourites))
   .then(stations => stations.sort(sortByPrice))
-  .then(stations => stations.filter(filterFavouritesInGuadalajara))
-  .then(log)
-  .catch(error => {
-    console.log('error', error)
-  })
-
-axios.post(targetUrl, piozStationsRequestBody)
-  .then(response => response.data)
-  .then(data => {
-    console.log('Estaciones de Pioz')
-    return data
-  })
-  .then(data => data.estaciones.map(StationRecord.fromRequest))
-  .then(stations => stations.sort(sortByPrice))
-  .then(stations => stations.filter(filterFavouritesInPioz))
   .then(log)
   .catch(error => {
     console.log('error', error)
