@@ -1,63 +1,9 @@
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
+import StationRequestParams from './model/geoportal/station-request-params'
+import cities from './config/cities'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-const alcalaStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '28',
-  'idMunicipio': 35174,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
-
-const guadaStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '19',
-  'idMunicipio': 20378,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
-
-const piozStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '19',
-  'idMunicipio': 20506,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
 
 function sortByPrice (left, right) {
   return left.price - right.price
@@ -91,17 +37,13 @@ function log (stations) {
   })
 }
 
-function requestStations (requestParams) {
-  return axios.post(targetUrl, requestParams)
+function requestStations (cityId) {
+  return axios.post(targetUrl, StationRequestParams.fromCity(cityId))
     .then(response => response.data)
     .then(data => data.estaciones.map(StationRecord.fromRequest))
 }
 
-Promise.all([
-  requestStations(alcalaStationsRequestBody),
-  requestStations(guadaStationsRequestBody),
-  requestStations(piozStationsRequestBody)
-])
+Promise.all(cities.map(requestStations))
   .then(allStations => allStations.flat())
   .then(stations => stations.filter(filterFavourites))
   .then(stations => stations.sort(sortByPrice))
