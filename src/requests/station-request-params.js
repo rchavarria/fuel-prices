@@ -1,6 +1,6 @@
-export default class StationRequest {
+export default class StationRequestParams {
   static build (province, city) {
-    const request = new StationRequest()
+    const request = new StationRequestParams()
 
     request.idProvincia = province
     request.idMunicipio = city

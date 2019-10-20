@@ -1,11 +1,11 @@
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
-import StationRequest from './requests/station-request'
+import StationRequestParams from './requests/station-request-params'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-const alcalaStationsRequestBody = StationRequest.build('28', 35174)
-const guadaStationsRequestBody = StationRequest.build('19', 20378)
-const piozStationsRequestBody = StationRequest.build('19', 20506)
+const alcalaStationsRequestBody = StationRequestParams.build('28', 35174)
+const guadaStationsRequestBody = StationRequestParams.build('19', 20378)
+const piozStationsRequestBody = StationRequestParams.build('19', 20506)
 
 function sortByPrice (left, right) {
   return left.price - right.price
