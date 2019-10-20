@@ -4,9 +4,12 @@ import StationRequestParams from './model/geoportal/station-request-params'
 import CityId from './requests/city-id'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
+
+// configure cities to ask data for
 const alcala = new CityId('28', 35174)
 const guada = new CityId('19', 20378)
 const pioz = new CityId('19', 20506)
+const cities = [ alcala, guada, pioz ]
 
 function sortByPrice (left, right) {
   return left.price - right.price
@@ -46,11 +49,7 @@ function requestStations (cityId) {
     .then(data => data.estaciones.map(StationRecord.fromRequest))
 }
 
-Promise.all([
-  requestStations(alcala),
-  requestStations(guada),
-  requestStations(pioz)
-])
+Promise.all(cities.map(requestStations))
   .then(allStations => allStations.flat())
   .then(stations => stations.filter(filterFavourites))
   .then(stations => stations.sort(sortByPrice))
