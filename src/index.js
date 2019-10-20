@@ -1,63 +1,11 @@
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
+import StationRequest from './requests/station-request'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-const alcalaStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '28',
-  'idMunicipio': 35174,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
-
-const guadaStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '19',
-  'idMunicipio': 20378,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
-
-const piozStationsRequestBody = {
-  'tipoEstacion': 'EESS',
-  'idProvincia': '19',
-  'idMunicipio': 20506,
-  'idProducto': 4,
-  'rotulo': '',
-  'eessEconomicas': false,
-  'conPlanesDescuento': false,
-  'horarioInicial': null,
-  'horarioFinal': null,
-  'calle': '',
-  'numero': '',
-  'codPostal': '',
-  'tipoVenta': null,
-  'idOperador': null,
-  'nombrePlan': '',
-  'idTipoDestinatario': null
-}
+const alcalaStationsRequestBody = StationRequest.build('28', 35174)
+const guadaStationsRequestBody = StationRequest.build('19', 20378)
+const piozStationsRequestBody = StationRequest.build('19', 20506)
 
 function sortByPrice (left, right) {
   return left.price - right.price
