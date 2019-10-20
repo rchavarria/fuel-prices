@@ -1,11 +1,12 @@
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
 import StationRequestParams from './requests/station-request-params'
+import StationRequestId from './requests/station-request-id'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-const alcalaStationsRequestBody = StationRequestParams.build('28', 35174)
-const guadaStationsRequestBody = StationRequestParams.build('19', 20378)
-const piozStationsRequestBody = StationRequestParams.build('19', 20506)
+const alcala = new StationRequestId('28', 35174)
+const guada = new StationRequestId('19', 20378)
+const pioz = new StationRequestId('19', 20506)
 
 function sortByPrice (left, right) {
   return left.price - right.price
@@ -39,16 +40,16 @@ function log (stations) {
   })
 }
 
-function requestStations (requestParams) {
-  return axios.post(targetUrl, requestParams)
+function requestStations (stationId) {
+  return axios.post(targetUrl, StationRequestParams.fromId(stationId))
     .then(response => response.data)
     .then(data => data.estaciones.map(StationRecord.fromRequest))
 }
 
 Promise.all([
-  requestStations(alcalaStationsRequestBody),
-  requestStations(guadaStationsRequestBody),
-  requestStations(piozStationsRequestBody)
+  requestStations(alcala),
+  requestStations(guada),
+  requestStations(pioz)
 ])
   .then(allStations => allStations.flat())
   .then(stations => stations.filter(filterFavourites))

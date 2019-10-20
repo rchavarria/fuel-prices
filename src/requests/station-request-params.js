@@ -1,9 +1,9 @@
 export default class StationRequestParams {
-  static build (province, city) {
+  static fromId (id) {
     const request = new StationRequestParams()
 
-    request.idProvincia = province
-    request.idMunicipio = city
+    request.idProvincia = id.province
+    request.idMunicipio = id.city
 
     return request
   }
