@@ -10,8 +10,8 @@ export default class StationRequestParams {
 
   constructor () {
     // non-constant request params
-    this.idProvincia = ''
-    this.idMunicipio = 0
+    this.idProvincia = undefined
+    this.idMunicipio = undefined
 
     // default request params
     this.tipoEstacion = 'EESS'
