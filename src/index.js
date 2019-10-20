@@ -1,6 +1,6 @@
 import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
-import StationRequestParams from './requests/station-request-params'
+import StationRequestParams from './model/geoportal/station-request-params'
 import CityId from './requests/city-id'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
