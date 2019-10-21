@@ -2,16 +2,9 @@ import axios from 'axios'
 import StationRecord from './model/geoportal/station-record'
 import StationRequestParams from './model/geoportal/station-request-params'
 import cities from './config/cities'
+import sortByPrice from './core/sort-by-price'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
-
-function sortByPrice (left, right) {
-  return left.price - right.price
-}
-
-function sort (stations) {
-  return stations.sort(sortByPrice)
-}
 
 function filterFavourites (stationRecord) {
   const favourites = [
@@ -50,7 +43,7 @@ function requestStations (cityId) {
 Promise.all(cities.map(requestStations))
   .then(allStations => allStations.flat())
   .then(stations => stations.filter(filterFavourites))
-  .then(sort)
+  .then(sortByPrice)
   .then(log)
   .catch(error => {
     console.log('error', error)
