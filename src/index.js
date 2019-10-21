@@ -9,6 +9,10 @@ function sortByPrice (left, right) {
   return left.price - right.price
 }
 
+function sort (stations) {
+  return stations.sort(sortByPrice)
+}
+
 function filterFavourites (stationRecord) {
   const favourites = [
     // Alcala
@@ -46,7 +50,7 @@ function requestStations (cityId) {
 Promise.all(cities.map(requestStations))
   .then(allStations => allStations.flat())
   .then(stations => stations.filter(filterFavourites))
-  .then(stations => stations.sort(sortByPrice))
+  .then(sort)
   .then(log)
   .catch(error => {
     console.log('error', error)
