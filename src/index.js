@@ -3,28 +3,24 @@ import StationRecord from './model/geoportal/station-record'
 import StationRequestParams from './model/geoportal/station-request-params'
 import cities from './config/cities'
 import sortByPrice from './core/sort-by-price'
+import filterFavourites from './core/filter-favourites'
 
 const targetUrl = 'https://geoportalgasolineras.es/rest/busquedaEstaciones'
+const favourites = [
+  // Alcala
+  { id: 3079, label: 'Alcalá: Alcampo' },
+  { id: 2929, label: 'Alcalá: Galp cerca del Alcampo' },
+  { id: 3067, label: 'Alcalá: Galp Villamalea' },
+  { id: 4698, label: 'Alcalá: Galp NII' },
+  { id: 4697, label: 'Alcalá: Galp Mercadona Meco' },
+  { id: 12721, label: 'Alcalá: Galp rotonda Fiesta' },
 
-function filterFavourites (stationRecord) {
-  const favourites = [
-    // Alcala
-    3079, // Alcampo
-    2929, // Galp cerca del Alcampo
-    3067, // Galp Villamalea
-    4698, // Galp NII
-    4697, // Galp Mercadona Meco
-    12721, // Galp rotonda Fiesta
+  // Guada
+  { id: 8292, label: 'Guada: Galp en rotonda de la bici' },
 
-    // Guada
-    8292, // Galp en rotonda de la bici
-
-    // Pioz
-    11591 // Repsol Pioz
-  ]
-
-  return favourites.includes(stationRecord.station.id)
-}
+  // Pioz
+  { id: 11591, label: 'Pioz: Repsol Pioz' }
+]
 
 function log (stations) {
   console.log('Hay', stations.length, 'estaciones')
@@ -42,7 +38,7 @@ function requestStations (cityId) {
 
 Promise.all(cities.map(requestStations))
   .then(allStations => allStations.flat())
-  .then(stations => stations.filter(filterFavourites))
+  .then(filterFavourites(favourites))
   .then(sortByPrice)
   .then(log)
   .catch(error => {
