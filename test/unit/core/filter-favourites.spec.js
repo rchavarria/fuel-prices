@@ -29,4 +29,11 @@ describe('filterFavourites', () => {
     expect(filtered).toHaveLength(fakeFavourites.length)
     expect(filtered[0].id).toEqual(fakeFavourites[0].id)
   })
+
+  it('selects from favourites that are present in stations', () => {
+    const extendedFakeFavourites = fakeFavourites.concat({ id: 99 })
+    const filtered = filterFavourites(fakeStations, extendedFakeFavourites)
+    expect(filtered).toHaveLength(fakeFavourites.length)
+    expect(filtered[1].id).toEqual(fakeFavourites[1].id)
+  })
 })
