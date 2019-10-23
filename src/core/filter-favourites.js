@@ -1,4 +1,4 @@
-export default function filterFavourites (stations, favourites) {
+export default function filterFavourites (stationRecords, favourites) {
   const favouriteIds = favourites.map(f => f.id)
-  return stations.filter(station => favouriteIds.includes(station.id))
+  return stationRecords.filter(record => favouriteIds.includes(record.station.id))
 }
