@@ -19,14 +19,14 @@ describe('filterFavourites', () => {
     expect(filtered).toBeDefined()
   })
 
-  it('removes all stations if there are no favourites', () => {
+  it('selects no stations if there are no favourites', () => {
     const filtered = filterFavourites(fakeStations, [])
     expect(filtered).toHaveLength(0)
   })
 
-  it('removes all from favourites', () => {
+  it('selects only those from favourites', () => {
     const filtered = filterFavourites(fakeStations, fakeFavourites)
-    expect(filtered).toHaveLength(fakeStations.length - fakeFavourites.length)
-    expect(filtered[2].id).toEqual(fakeStations[4].id)
+    expect(filtered).toHaveLength(fakeFavourites.length)
+    expect(filtered[0].id).toEqual(fakeFavourites[0].id)
   })
 })
