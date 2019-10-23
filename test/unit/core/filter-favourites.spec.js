@@ -23,24 +23,24 @@ describe('filterFavourites', () => {
   ]
 
   it('works with empty lists', () => {
-    const filtered = filterFavourites([], [])
+    const filtered = filterFavourites([])([])
     expect(filtered).toBeDefined()
   })
 
   it('selects no stations if there are no favourites', () => {
-    const filtered = filterFavourites(fakeStationRecords, [])
+    const filtered = filterFavourites([])(fakeStationRecords)
     expect(filtered).toHaveLength(0)
   })
 
   it('selects only those from favourites', () => {
-    const filtered = filterFavourites(fakeStationRecords, fakeFavourites)
+    const filtered = filterFavourites(fakeFavourites)(fakeStationRecords)
     expect(filtered).toHaveLength(fakeFavourites.length)
     expect(filtered[0].station.id).toEqual(fakeFavourites[0].id)
   })
 
   it('selects from favourites that are present in stations', () => {
     const extendedFakeFavourites = fakeFavourites.concat({ id: 99 })
-    const filtered = filterFavourites(fakeStationRecords, extendedFakeFavourites)
+    const filtered = filterFavourites(extendedFakeFavourites)(fakeStationRecords)
     expect(filtered).toHaveLength(fakeFavourites.length)
     expect(filtered[1].station.id).toEqual(fakeFavourites[1].id)
   })
