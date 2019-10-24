@@ -1,15 +1,17 @@
+import FavouriteStation from '../model/favourite-station'
+
 export default [
   // Alcala
-  { id: 3079, label: 'Alcalá: Alcampo' },
-  { id: 2929, label: 'Alcalá: Galp cerca del Alcampo' },
-  { id: 3067, label: 'Alcalá: Galp Villamalea' },
-  { id: 4698, label: 'Alcalá: Galp NII' },
-  { id: 4697, label: 'Alcalá: Galp Mercadona Meco' },
-  { id: 12721, label: 'Alcalá: Galp rotonda Fiesta' },
+  new FavouriteStation(3079, 'Alcalá: Alcampo'),
+  new FavouriteStation(2929, 'Alcalá: Galp cerca del Alcampo'),
+  new FavouriteStation(3067, 'Alcalá: Galp Villamalea'),
+  new FavouriteStation(4698, 'Alcalá: Galp NII'),
+  new FavouriteStation(4697, 'Alcalá: Galp Mercadona Meco'),
+  new FavouriteStation(12721, 'Alcalá: Galp rotonda Fiesta'),
 
   // Guada
-  { id: 8292, label: 'Guada: Galp en rotonda de la bici' },
+  new FavouriteStation(8292, 'Guada: Galp en rotonda de la bici'),
 
   // Pioz
-  { id: 11591, label: 'Pioz: Repsol Pioz' }
+  new FavouriteStation(11591, 'Pioz: Repsol Pioz')
 ]
