@@ -31,4 +31,15 @@ describe('printerBuilder', () => {
     printer(fakeStations)
     expect(messages[0]).toContain(fakeStations.length.toString())
   })
+
+  it('logs lines with information about stations', () => {
+    printer(fakeStations)
+
+    const firstStationLine = messages[1]
+    const firstStation = fakeStations[0]
+    expect(firstStationLine).toContain(firstStation.id.toString())
+    expect(firstStationLine).toContain(firstStation.label)
+    expect(firstStationLine).toContain(firstStation.address)
+    expect(firstStationLine).toContain(firstStation.price.toString())
+  })
 })
