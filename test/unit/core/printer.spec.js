@@ -24,12 +24,11 @@ describe('printerBuilder', () => {
   it('logs some messages', () => {
     printer(fakeStations)
     expect(fakeLogger.log).toBeCalled()
+    expect(fakeLogger.log.mock.calls).toHaveLength(1 + fakeStations.length, 'header + station lines')
   })
 
   it('logs a header line', () => {
     printer(fakeStations)
-
-    expect(messages).toHaveLength(1)
     expect(messages[0]).toContain(fakeStations.length.toString())
   })
 })
