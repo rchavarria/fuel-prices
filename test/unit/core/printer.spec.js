@@ -22,4 +22,18 @@ describe('printer', () => {
 
     expect(fakeLogger.log).toBeCalled()
   })
+
+  it('logs a header line', () => {
+    const messages = []
+    const fakeLogger = {
+      log: jest.fn(msg => messages.push(msg))
+    }
+
+    const builder = printer(fakeLogger)
+
+    builder(fakeStations)
+
+    expect(messages).toHaveLength(1)
+    expect(messages[0]).toContain(fakeStations.length.toString())
+  })
 })
