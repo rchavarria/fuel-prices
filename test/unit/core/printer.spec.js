@@ -1,7 +1,10 @@
 /* eslint-env jest */
-import printer from '../../../src/core/printer'
+import printerBuilder from '../../../src/core/printer-builder'
 
-describe('printer', () => {
+describe('printerBuilder', () => {
+  let messages
+  let fakeLogger
+  let printer
   const fakeStations = [
     { id: 1, price: 150 },
     { id: 2, price: 100 },
@@ -11,27 +14,20 @@ describe('printer', () => {
   ]
 
   beforeEach(() => {
+    messages = []
+    fakeLogger = {
+      log: jest.fn(msg => messages.push(msg))
+    }
+    printer = printerBuilder(fakeLogger)
   })
 
   it('logs some messages', () => {
-    const fakeLogger = {
-      log: jest.fn()
-    }
-    const builder = printer(fakeLogger)
-    builder(fakeStations)
-
+    printer(fakeStations)
     expect(fakeLogger.log).toBeCalled()
   })
 
   it('logs a header line', () => {
-    const messages = []
-    const fakeLogger = {
-      log: jest.fn(msg => messages.push(msg))
-    }
-
-    const builder = printer(fakeLogger)
-
-    builder(fakeStations)
+    printer(fakeStations)
 
     expect(messages).toHaveLength(1)
     expect(messages[0]).toContain(fakeStations.length.toString())
