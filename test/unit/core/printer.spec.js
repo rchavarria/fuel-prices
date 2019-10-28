@@ -6,11 +6,11 @@ describe('printerBuilder', () => {
   let fakeLogger
   let printer
   const fakeStations = [
-    { id: 1, price: 150 },
-    { id: 2, price: 100 },
-    { id: 3, price: 500 },
-    { id: 4, price: 900 },
-    { id: 5, price: 200 }
+    { id: 1, price: 150, label: 'station#1', address: 'address#1' },
+    { id: 2, price: 100, label: 'station#2', address: 'address#2' },
+    { id: 3, price: 500, label: 'station#3', address: 'address#3' },
+    { id: 4, price: 900, label: 'station#4', address: 'address#4' },
+    { id: 5, price: 200, label: 'station#5', address: 'address#5' }
   ]
 
   beforeEach(() => {
