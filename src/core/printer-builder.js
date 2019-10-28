@@ -3,7 +3,7 @@ export default function (logger) {
     logger.log(`Hay ${stations.length} estaciones`)
 
     stations.forEach(station => {
-      logger.log(station.price)
+      logger.log(`(${station.id}) Estación "${station.label}" en ${station.address} tiene un precio de ${station.price}€`)
     })
   }
 }
