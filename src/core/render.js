@@ -1,3 +1,8 @@
 export default function (template, params) {
-  return template
+  let result = template
+  params.forEach(param => {
+    result = result.replace(param.key, param.value)
+  })
+
+  return result
 }
