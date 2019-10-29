@@ -16,4 +16,12 @@ describe('render', () => {
     const text = render('Renders {this-key} here', params)
     expect(text).toEqual('Renders expected value here')
   })
+
+  it('does not render non existing params', () => {
+    const params = [
+      new TemplateParam('this-key', 'non replaced value')
+    ]
+    const text = render('Renders {another-key} here', params)
+    expect(text).not.toContain('non replaced value')
+  })
 })
