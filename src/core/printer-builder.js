@@ -10,18 +10,18 @@ export default function (logger) {
       new TemplateParam('length', stations.length)
     ]
 
-    const lines = stations.map(station => {
+    const lines = stations.map(stationRecord => {
       const stationLineParams = [
-        new TemplateParam('id', station.id),
-        new TemplateParam('label', station.label),
-        new TemplateParam('address', station.address),
-        new TemplateParam('price', station.price)
+        new TemplateParam('id', stationRecord.station.id),
+        new TemplateParam('label', stationRecord.station.label),
+        new TemplateParam('address', stationRecord.station.address),
+        new TemplateParam('price', stationRecord.price)
       ]
 
       return render(stationLineTemplate, stationLineParams)
     })
 
     logger.log(render(titleTemplate, titleParams))
-    lines.forEach(logger.log)
+    lines.forEach(line => logger.log(line))
   }
 }
