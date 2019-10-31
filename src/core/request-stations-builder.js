@@ -1,5 +1,5 @@
-export default function (axios) {
+export default function (restClient) {
   return function () {
-    return null
+    return restClient.post()
   }
 }

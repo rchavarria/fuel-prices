@@ -13,12 +13,12 @@ describe('requestStationsBuilder', () => {
   })
 
   it('accepts a rest client as parameter and uses it', () => {
-    const fakeAxios = {
+    const fakeRestClient = {
       post: jest.fn()
     }
 
-    requestStations = requestStationsBuilder(fakeAxios)
+    requestStations = requestStationsBuilder(fakeRestClient)
     requestStations()
-    expect(fakeAxios.post).toBeCalled()
+    expect(fakeRestClient.post).toBeCalled()
   })
 })
