@@ -53,6 +53,16 @@ describe('requestStationsBuilder', () => {
     expect(fakeRestClient.post.mock.calls[0][0]).toEqual(STATIONS_URL)
   })
 
+  it('uses these options when requesting data', () => {
+    const requestParams = {
+      // todo ¿qué parámetros pasa en la llamada?
+    }
+
+    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations()
+    expect(fakeRestClient.post.mock.calls[0][1]).toEqual(requestParams)
+  })
+
   it('parses the response data to build station records', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
     return requestStations()
