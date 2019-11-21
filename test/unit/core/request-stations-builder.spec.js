@@ -1,6 +1,7 @@
 /* eslint-env jest */
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
 import StationRecord from '../../../src/model/geoportal/station-record'
+import { STATIONS_URL } from '../../../src/core/stations-url'
 
 describe('requestStationsBuilder', () => {
   let requestStations,
@@ -44,6 +45,12 @@ describe('requestStationsBuilder', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
     requestStations()
     expect(fakeRestClient.post).toBeCalled()
+  })
+
+  it('makes a request to a specific URL', () => {
+    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations()
+    expect(fakeRestClient.post.mock.calls[0][0]).toEqual(STATIONS_URL)
   })
 
   it('parses the response data to build station records', () => {
