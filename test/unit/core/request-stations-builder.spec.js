@@ -5,10 +5,12 @@ import { STATIONS_URL } from '../../../src/core/stations-url'
 import StationRequestId from '../../../src/requests/city-id'
 
 describe('requestStationsBuilder', () => {
-  let requestStations,
+  let cityId,
+    requestStations,
     fakeRestClient
 
   beforeEach(() => {
+    cityId = new StationRequestId('11', 221133)
     requestStations = requestStationsBuilder(null)
 
     const fakeResponse = {
@@ -44,19 +46,17 @@ describe('requestStationsBuilder', () => {
 
   it('accepts a rest client as parameter and uses it', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
-    requestStations()
+    requestStations(cityId)
     expect(fakeRestClient.post).toBeCalled()
   })
 
   it('makes a request to a specific URL', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
-    requestStations()
+    requestStations(cityId)
     expect(fakeRestClient.post.mock.calls[0][0]).toEqual(STATIONS_URL)
   })
 
   it('uses these options when requesting data', () => {
-    const cityId = new StationRequestId('11', 221133)
-
     requestStations = requestStationsBuilder(fakeRestClient)
     requestStations(cityId)
 
@@ -67,7 +67,7 @@ describe('requestStationsBuilder', () => {
 
   it('parses the response data to build station records', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
-    return requestStations()
+    return requestStations(cityId)
       .then(records => {
         expect(records[0]).toBeInstanceOf(StationRecord)
       })
