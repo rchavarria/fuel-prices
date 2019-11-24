@@ -1,9 +1,9 @@
 /* eslint-env jest */
 import printerBuilder from '../../../src/core/printer-builder'
-import MyStation from '../../../src/model/geoportal/my-station'
+import Station from '../../../src/model/geoportal/station'
 
 function buildStation (id, price) {
-  const station = new MyStation()
+  const station = new Station()
 
   station.id = id
   station.price = price

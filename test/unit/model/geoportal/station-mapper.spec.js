@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 import StationMapper from '../../../../src/model/geoportal/station-mapper'
-import MyStation from '../../../../src/model/geoportal/my-station'
+import Station from '../../../../src/model/geoportal/station'
 
 function buildData (...stations) {
   return {
@@ -42,7 +42,7 @@ describe('StationMapper', () => {
     const stations = mapper.mapAll(data)
 
     expect(stations).toHaveLength(3)
-    expect(stations[0]).toBeInstanceOf(MyStation)
+    expect(stations[0]).toBeInstanceOf(Station)
   })
 
   it('maps a station id', () => {

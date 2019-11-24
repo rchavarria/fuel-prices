@@ -1,7 +1,7 @@
-import MyStation from './my-station'
+import Station from './station'
 
 function eachStation (responseStation) {
-  const station = new MyStation()
+  const station = new Station()
 
   station.id = responseStation.estacion.id
   station.price = responseStation.precio

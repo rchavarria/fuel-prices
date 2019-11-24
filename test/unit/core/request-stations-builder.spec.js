@@ -2,7 +2,7 @@
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
 import { STATIONS_URL } from '../../../src/core/stations-url'
 import StationRequestId from '../../../src/requests/city-id'
-import MyStation from '../../../src/model/geoportal/my-station'
+import Station from '../../../src/model/geoportal/station'
 
 describe('requestStationsBuilder', () => {
   let cityId,
@@ -69,7 +69,7 @@ describe('requestStationsBuilder', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
     return requestStations(cityId)
       .then(records => {
-        expect(records[0]).toBeInstanceOf(MyStation)
+        expect(records[0]).toBeInstanceOf(Station)
       })
   })
 })
