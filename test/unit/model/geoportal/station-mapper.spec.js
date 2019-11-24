@@ -9,14 +9,15 @@ function buildData (...stations) {
   }
 }
 
-function buildResponseStation (id, price, label, address, city) {
+function buildResponseStation (id, price, label, address, city, date) {
   return {
     precio: price || 1.234,
     estacion: {
       id: id || 'just-an-id',
       rotulo: label || 'just-a-label',
       direccion: address || 'just-an-address',
-      localidad: city || 'just-a-city'
+      localidad: city || 'just-a-city',
+      fechaPvp: date || '1/1/2019'
     }
   }
 }
@@ -90,5 +91,15 @@ describe('StationMapper', () => {
     const station = stations[0]
 
     expect(station.city).toEqual(expectedCity)
+  })
+
+  it('maps the date for the price', () => {
+    const expectedDate = '24/11/2019'
+    const data = buildData(buildResponseStation(undefined, undefined, undefined, undefined, undefined, expectedDate))
+
+    const stations = mapper.mapAll(data)
+    const station = stations[0]
+
+    expect(station.priceDate).toEqual(expectedDate)
   })
 })
