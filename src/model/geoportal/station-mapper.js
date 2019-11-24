@@ -10,6 +10,7 @@ export default class StationMapper {
       const station = new MyStation()
 
       station.id = responseStation.estacion.id
+      station.price = responseStation.precio
 
       return station
     })

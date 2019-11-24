@@ -2,10 +2,11 @@
 import StationMapper from '../../../../src/model/geoportal/station-mapper'
 import MyStation from '../../../../src/model/geoportal/my-station'
 
-function buildResponseStation (id) {
+function buildResponseStation (id, price) {
   return {
+    precio: price || 1.234,
     estacion: {
-      id: id
+      id: id || 'just-an-id'
     }
   }
 }
@@ -22,9 +23,9 @@ describe('StationMapper', () => {
     const data = {
       bbox: {},
       estaciones: [
-        buildResponseStation(1),
-        buildResponseStation(2),
-        buildResponseStation(3)
+        buildResponseStation(),
+        buildResponseStation(),
+        buildResponseStation()
       ]
     }
     const stations = mapper.mapAll(data)
@@ -51,7 +52,7 @@ describe('StationMapper', () => {
     const data = {
       bbox: {},
       estaciones: [
-        buildResponseStation(1, expectedPrice)
+        buildResponseStation(undefined, expectedPrice)
       ]
     }
     const stations = mapper.mapAll(data)
