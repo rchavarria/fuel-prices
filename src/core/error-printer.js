@@ -1,5 +1,5 @@
-export default function (output) {
+export default function (logger) {
   return function (error) {
-    output.error('Error:', error)
+    logger.error('Error:', error)
   }
 }
