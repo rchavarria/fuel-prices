@@ -22,4 +22,22 @@ describe('StationMapper', () => {
     const stations = mapper.mapAll(data)
     expect(stations).toHaveLength(3)
   })
+
+  it('maps a station id', () => {
+    const expectedStationId = 'station-id'
+    const data = {
+      bbox: {},
+      estaciones: [
+        {
+          estacion: {
+            id: expectedStationId
+          }
+        }
+      ]
+    }
+    const stations = mapper.mapAll(data)
+    const station = stations[0]
+
+    expect(station.id).toEqual(expectedStationId)
+  })
 })
