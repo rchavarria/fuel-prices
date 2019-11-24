@@ -6,7 +6,11 @@ describe('StationMapper', () => {
   const mapper = new StationMapper()
 
   it('maps a null request', () => {
-    const station = mapper.map(null)
-    expect(station).toBeInstanceOf(MyStation)
+    const stations = mapper.map(null)
+    expect(stations).toHaveLength(0)
+  })
+
+  it('maps as many stations as returned by the API', () => {
+
   })
 })
