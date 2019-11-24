@@ -1,16 +1,28 @@
 /* eslint-env jest */
 import printerBuilder from '../../../src/core/printer-builder'
+import MyStation from '../../../src/model/geoportal/my-station'
+
+function buildStation (id, price) {
+  const station = new MyStation()
+
+  station.id = id
+  station.price = price
+  station.label = `station #${id}`
+  station.address = `address #${id}`
+
+  return station
+}
 
 describe('printerBuilder', () => {
   let messages
   let fakeLogger
   let printer
   const fakeStations = [
-    { price: 150, station: { id: 1, label: 'station#1', address: 'address#1' } },
-    { price: 100, station: { id: 1, label: 'station#2', address: 'address#2' } },
-    { price: 500, station: { id: 1, label: 'station#3', address: 'address#3' } },
-    { price: 900, station: { id: 1, label: 'station#4', address: 'address#4' } },
-    { price: 200, station: { id: 1, label: 'station#5', address: 'address#5' } }
+    buildStation(1, 150),
+    buildStation(2, 100),
+    buildStation(3, 500),
+    buildStation(4, 900),
+    buildStation(5, 200)
   ]
 
   beforeEach(() => {
@@ -37,9 +49,9 @@ describe('printerBuilder', () => {
 
     const firstStationLine = messages[1]
     const firstStation = fakeStations[0]
-    expect(firstStationLine).toContain(firstStation.station.id.toString())
-    expect(firstStationLine).toContain(firstStation.station.label)
-    expect(firstStationLine).toContain(firstStation.station.address)
+    expect(firstStationLine).toContain(firstStation.id.toString())
+    expect(firstStationLine).toContain(firstStation.label)
+    expect(firstStationLine).toContain(firstStation.address)
     expect(firstStationLine).toContain(firstStation.price.toString())
   })
 })

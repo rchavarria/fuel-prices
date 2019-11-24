@@ -12,9 +12,9 @@ export default function (logger) {
 
     const lines = stations.map(stationRecord => {
       const stationLineParams = [
-        new TemplateParam('id', stationRecord.station.id),
-        new TemplateParam('label', stationRecord.station.label),
-        new TemplateParam('address', stationRecord.station.address),
+        new TemplateParam('id', stationRecord.id),
+        new TemplateParam('label', stationRecord.label),
+        new TemplateParam('address', stationRecord.address),
         new TemplateParam('price', stationRecord.price)
       ]
 

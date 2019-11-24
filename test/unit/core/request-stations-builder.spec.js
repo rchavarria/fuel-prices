@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
-import StationRecord from '../../../src/model/geoportal/station-record'
 import { STATIONS_URL } from '../../../src/core/stations-url'
 import StationRequestId from '../../../src/requests/city-id'
+import MyStation from '../../../src/model/geoportal/my-station'
 
 describe('requestStationsBuilder', () => {
   let cityId,
@@ -69,7 +69,7 @@ describe('requestStationsBuilder', () => {
     requestStations = requestStationsBuilder(fakeRestClient)
     return requestStations(cityId)
       .then(records => {
-        expect(records[0]).toBeInstanceOf(StationRecord)
+        expect(records[0]).toBeInstanceOf(MyStation)
       })
   })
 })
