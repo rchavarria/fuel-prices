@@ -9,17 +9,19 @@ function buildData (...stations) {
   }
 }
 
-function buildResponseStation (id, price, label, address, city, date) {
-  return {
-    precio: price || 1.234,
+function buildResponseStation (options = {}) {
+  const defaults = {
+    precio: 1.234,
     estacion: {
-      id: id || 'just-an-id',
-      rotulo: label || 'just-a-label',
-      direccion: address || 'just-an-address',
-      localidad: city || 'just-a-city',
-      fechaPvp: date || '1/1/2019'
+      id: 'just-an-id',
+      rotulo: 'just-a-label',
+      direccion: 'just-an-address',
+      localidad: 'just-a-city',
+      fechaPvp: '1/1/2019'
     }
   }
+
+  return Object.assign({}, defaults, options)
 }
 
 describe('StationMapper', () => {
@@ -45,7 +47,7 @@ describe('StationMapper', () => {
 
   it('maps a station id', () => {
     const expectedStationId = 'station-id'
-    const data = buildData(buildResponseStation(expectedStationId))
+    const data = buildData(buildResponseStation({ estacion: { id: expectedStationId } }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
@@ -55,7 +57,7 @@ describe('StationMapper', () => {
 
   it('maps the fuels price for the station', () => {
     const expectedPrice = 1234.321
-    const data = buildData(buildResponseStation(undefined, expectedPrice))
+    const data = buildData(buildResponseStation({ precio: expectedPrice }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
@@ -65,7 +67,7 @@ describe('StationMapper', () => {
 
   it('maps the station label', () => {
     const expectedLabel = 'expected label'
-    const data = buildData(buildResponseStation(undefined, undefined, expectedLabel))
+    const data = buildData(buildResponseStation({ estacion: { rotulo: expectedLabel } }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
@@ -75,7 +77,7 @@ describe('StationMapper', () => {
 
   it('maps the station address', () => {
     const expectedAddress = 'expected address'
-    const data = buildData(buildResponseStation(undefined, undefined, undefined, expectedAddress))
+    const data = buildData(buildResponseStation({ estacion: { direccion: expectedAddress } }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
@@ -85,7 +87,7 @@ describe('StationMapper', () => {
 
   it('maps the station city', () => {
     const expectedCity = 'expected city'
-    const data = buildData(buildResponseStation(undefined, undefined, undefined, undefined, expectedCity))
+    const data = buildData(buildResponseStation({ estacion: { localidad: expectedCity } }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
@@ -95,7 +97,7 @@ describe('StationMapper', () => {
 
   it('maps the date for the price', () => {
     const expectedDate = '24/11/2019'
-    const data = buildData(buildResponseStation(undefined, undefined, undefined, undefined, undefined, expectedDate))
+    const data = buildData(buildResponseStation({ estacion: { fechaPvp: expectedDate } }))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
