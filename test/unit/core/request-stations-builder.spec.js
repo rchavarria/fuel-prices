@@ -2,6 +2,7 @@
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
 import StationRecord from '../../../src/model/geoportal/station-record'
 import { STATIONS_URL } from '../../../src/core/stations-url'
+import StationRequestId from '../../../src/requests/city-id'
 
 describe('requestStationsBuilder', () => {
   let requestStations,
@@ -54,13 +55,14 @@ describe('requestStationsBuilder', () => {
   })
 
   it('uses these options when requesting data', () => {
-    const requestParams = {
-      // todo ¿qué parámetros pasa en la llamada?
-    }
+    const cityId = new StationRequestId('11', 221133)
 
     requestStations = requestStationsBuilder(fakeRestClient)
-    requestStations()
-    expect(fakeRestClient.post.mock.calls[0][1]).toEqual(requestParams)
+    requestStations(cityId)
+
+    const requestParams = fakeRestClient.post.mock.calls[0][1]
+    expect(requestParams.idProvincia).toEqual(cityId.province)
+    expect(requestParams.idMunicipio).toEqual(cityId.city)
   })
 
   it('parses the response data to build station records', () => {
