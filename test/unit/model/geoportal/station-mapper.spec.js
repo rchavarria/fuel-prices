@@ -6,7 +6,7 @@ describe('StationMapper', () => {
   const mapper = new StationMapper()
 
   it('maps a null request', () => {
-    const stations = mapper.map(null)
+    const stations = mapper.mapAll(null)
     expect(stations).toHaveLength(0)
   })
 
@@ -19,7 +19,7 @@ describe('StationMapper', () => {
         {}
       ]
     }
-    const stations = mapper.map(data)
+    const stations = mapper.mapAll(data)
     expect(stations).toHaveLength(3)
   })
 })

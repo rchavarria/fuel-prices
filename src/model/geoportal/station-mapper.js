@@ -1,7 +1,7 @@
 import MyStation from './my-station'
 
 export default class StationMapper {
-  map (responseData) {
+  mapAll (responseData) {
     if (!responseData) {
       return []
     }
