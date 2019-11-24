@@ -11,6 +11,15 @@ describe('StationMapper', () => {
   })
 
   it('maps as many stations as returned by the API', () => {
-
+    const data = {
+      bbox: {},
+      estaciones: [
+        {},
+        {},
+        {}
+      ]
+    }
+    const stations = mapper.map(data)
+    expect(stations).toHaveLength(3)
   })
 })
