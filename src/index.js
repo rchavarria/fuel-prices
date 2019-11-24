@@ -1,11 +1,12 @@
+import axios from 'axios'
 import sortByPrice from './core/sort-by-price'
 import filterFavourites from './core/filter-favourites'
 import cities from './config/cities'
 import favourites from './config/favourties'
 import printerBuilder from './core/printer-builder'
-import requestStations from './core/request-stations'
+import requestStationsBuilder from './core/request-stations-builder'
 
-Promise.all(cities.map(requestStations))
+Promise.all(cities.map(requestStationsBuilder(axios)))
   .then(allStations => allStations.flat())
   .then(filterFavourites(favourites))
   .then(sortByPrice)
