@@ -9,11 +9,12 @@ function buildData (...stations) {
   }
 }
 
-function buildResponseStation (id, price) {
+function buildResponseStation (id, price, label) {
   return {
     precio: price || 1.234,
     estacion: {
-      id: id || 'just-an-id'
+      id: id || 'just-an-id',
+      rotulo: label || 'just-a-label'
     }
   }
 }
@@ -42,6 +43,7 @@ describe('StationMapper', () => {
   it('maps a station id', () => {
     const expectedStationId = 'station-id'
     const data = buildData(buildResponseStation(expectedStationId))
+
     const stations = mapper.mapAll(data)
     const station = stations[0]
 
@@ -51,9 +53,20 @@ describe('StationMapper', () => {
   it('maps the fuels price for the station', () => {
     const expectedPrice = 1234.321
     const data = buildData(buildResponseStation(undefined, expectedPrice))
+
     const stations = mapper.mapAll(data)
     const station = stations[0]
 
     expect(station.price).toEqual(expectedPrice)
+  })
+
+  it('maps the station label', () => {
+    const expectedLabel = 'expected label'
+    const data = buildData(buildResponseStation(undefined, undefined, expectedLabel))
+
+    const stations = mapper.mapAll(data)
+    const station = stations[0]
+
+    expect(station.label).toEqual(expectedLabel)
   })
 })
