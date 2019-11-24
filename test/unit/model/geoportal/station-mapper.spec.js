@@ -22,9 +22,9 @@ describe('StationMapper', () => {
     const data = {
       bbox: {},
       estaciones: [
-        buildResponseStation(),
-        buildResponseStation(),
-        buildResponseStation()
+        buildResponseStation(1),
+        buildResponseStation(2),
+        buildResponseStation(3)
       ]
     }
     const stations = mapper.mapAll(data)
@@ -37,16 +37,26 @@ describe('StationMapper', () => {
     const data = {
       bbox: {},
       estaciones: [
-        {
-          estacion: {
-            id: expectedStationId
-          }
-        }
+        buildResponseStation(expectedStationId)
       ]
     }
     const stations = mapper.mapAll(data)
     const station = stations[0]
 
     expect(station.id).toEqual(expectedStationId)
+  })
+
+  it('maps the fuels price for the station', () => {
+    const expectedPrice = 1234.321
+    const data = {
+      bbox: {},
+      estaciones: [
+        buildResponseStation(1, expectedPrice)
+      ]
+    }
+    const stations = mapper.mapAll(data)
+    const station = stations[0]
+
+    expect(station.price).toEqual(expectedPrice)
   })
 })
