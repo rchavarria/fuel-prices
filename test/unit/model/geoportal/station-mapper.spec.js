@@ -2,6 +2,14 @@
 import StationMapper from '../../../../src/model/geoportal/station-mapper'
 import MyStation from '../../../../src/model/geoportal/my-station'
 
+function buildResponseStation (id) {
+  return {
+    estacion: {
+      id: id
+    }
+  }
+}
+
 describe('StationMapper', () => {
   const mapper = new StationMapper()
 
@@ -14,13 +22,14 @@ describe('StationMapper', () => {
     const data = {
       bbox: {},
       estaciones: [
-        {},
-        {},
-        {}
+        buildResponseStation(),
+        buildResponseStation(),
+        buildResponseStation()
       ]
     }
     const stations = mapper.mapAll(data)
     expect(stations).toHaveLength(3)
+    expect(stations[0]).toBeInstanceOf(MyStation)
   })
 
   it('maps a station id', () => {

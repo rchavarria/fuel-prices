@@ -6,6 +6,12 @@ export default class StationMapper {
       return []
     }
 
-    return responseData.estaciones.map(responseStation => new MyStation())
+    return responseData.estaciones.map(responseStation => {
+      const station = new MyStation()
+
+      station.id = responseStation.estacion.id
+
+      return station
+    })
   }
 }
