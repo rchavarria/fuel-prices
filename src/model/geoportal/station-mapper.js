@@ -12,6 +12,7 @@ export default class StationMapper {
       station.id = responseStation.estacion.id
       station.price = responseStation.precio
       station.label = responseStation.estacion.rotulo
+      station.address = responseStation.estacion.direccion
 
       return station
     })
