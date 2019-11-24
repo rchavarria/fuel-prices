@@ -9,13 +9,14 @@ function buildData (...stations) {
   }
 }
 
-function buildResponseStation (id, price, label, address) {
+function buildResponseStation (id, price, label, address, city) {
   return {
     precio: price || 1.234,
     estacion: {
       id: id || 'just-an-id',
       rotulo: label || 'just-a-label',
-      direccion: address || 'just-an-address'
+      direccion: address || 'just-an-address',
+      localidad: city || 'just-a-city'
     }
   }
 }
@@ -72,12 +73,22 @@ describe('StationMapper', () => {
   })
 
   it('maps the station address', () => {
-    const expectedAddress = 'expected label'
+    const expectedAddress = 'expected address'
     const data = buildData(buildResponseStation(undefined, undefined, undefined, expectedAddress))
 
     const stations = mapper.mapAll(data)
     const station = stations[0]
 
     expect(station.address).toEqual(expectedAddress)
+  })
+
+  it('maps the station city', () => {
+    const expectedCity = 'expected city'
+    const data = buildData(buildResponseStation(undefined, undefined, undefined, undefined, expectedCity))
+
+    const stations = mapper.mapAll(data)
+    const station = stations[0]
+
+    expect(station.city).toEqual(expectedCity)
   })
 })
