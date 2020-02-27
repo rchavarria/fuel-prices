@@ -6,5 +6,6 @@ export default class Station {
     this.address = null
     this.city = null
     this.priceDate = null
+    this.description = null
   }
 }
