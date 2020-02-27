@@ -2,7 +2,7 @@ import render from './render'
 import TemplateParam from '../model/template-param'
 
 const titleTemplate = `Hay {length} estaciones`
-const stationLineTemplate = `({id}) Estación "{label}" en {address} tiene un precio de {price}€`
+const stationLineTemplate = `{price}€ en la estación "{description}", {id}, {label} en {address}`
 
 export default function (logger) {
   return function (stations) {
@@ -15,7 +15,8 @@ export default function (logger) {
         new TemplateParam('id', stationRecord.id),
         new TemplateParam('label', stationRecord.label),
         new TemplateParam('address', stationRecord.address),
-        new TemplateParam('price', stationRecord.price)
+        new TemplateParam('price', stationRecord.price),
+        new TemplateParam('description', stationRecord.description)
       ]
 
       return render(stationLineTemplate, stationLineParams)
