@@ -4,6 +4,13 @@ import TemplateParam from '../model/template-param'
 const titleTemplate = `Hay {length} estaciones`
 const stationLineTemplate = `{price}€ en la estación "{description}", {id}, {label} en {address}`
 
+/**
+ * Logs output information based on some templates
+ *
+ * @param logger
+ *
+ * @returns {function([*])}
+ */
 export default function (logger) {
   return function (stations) {
     const titleParams = [
