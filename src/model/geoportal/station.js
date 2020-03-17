@@ -1,3 +1,6 @@
+/**
+ * Station information
+ */
 export default class Station {
   constructor () {
     this.id = 0
