@@ -1,3 +1,12 @@
+/**
+ * Given a list of stations and favourites, it matches them by `id` and replaces station's description
+ * with favourite's label in order to being able to better recognize the station when displaying
+ * the report with the list of stations
+ *
+ * @param favourites
+ *
+ * @returns function Function accepting a list of stations
+ */
 export default function augmentWitFavourites (favourites) {
   return function (stationRecords) {
     const copy = stationRecords.map(s => Object.assign({}, s))
