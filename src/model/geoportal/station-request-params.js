@@ -1,4 +1,14 @@
+/**
+ * Mandatory params to make requests to geoportalgasolineras
+ */
 export default class StationRequestParams {
+  /**
+   * Builds params for a given city
+   *
+   * @param city {StationRequestId}
+   *
+   * @returns {StationRequestParams}
+   */
   static fromCity (city) {
     const request = new StationRequestParams()
 

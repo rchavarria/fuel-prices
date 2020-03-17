@@ -1,5 +1,13 @@
 import Station from './station'
 
+/**
+ * Extracts information from geoportalgasoliners API to build
+ * an Station
+ *
+ * @param responseStation {*}
+ *
+ * @returns {Station}
+ */
 function eachStation (responseStation) {
   const station = new Station()
 
@@ -13,6 +21,9 @@ function eachStation (responseStation) {
   return station
 }
 
+/**
+ * Converts data from geoportalgasolineras into data on our own
+ */
 export default class StationMapper {
   mapAll (responseData) {
     if (!responseData) {
