@@ -5,7 +5,7 @@ export default class StationRequestParams {
   /**
    * Builds params for a given city
    *
-   * @param city {StationRequestId}
+   * @param city {CityId}
    *
    * @returns {StationRequestParams}
    */

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
 import Config from '../../../src/config/config'
-import StationRequestId from '../../../src/requests/city-id'
+import CityId from '../../../src/requests/city-id'
 import Station from '../../../src/model/geoportal/station'
 
 describe('requestStationsBuilder', () => {
@@ -10,7 +10,7 @@ describe('requestStationsBuilder', () => {
     fakeRestClient
 
   beforeEach(() => {
-    cityId = new StationRequestId('11', 221133)
+    cityId = new CityId('11', 221133)
     requestStations = requestStationsBuilder(null)
 
     const fakeResponse = {
