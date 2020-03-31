@@ -8,6 +8,9 @@ export default {
   // URL to get stations information
   STATIONS_URL: 'https://geoportalgasolineras.es/rest/busquedaEstaciones',
 
+  // csv output file
+  outputFile: 'logs/stations.csv',
+
   // cities to request data
   cities: [
     new CityId('01', 20001),
