@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import requestStationsBuilder from '../../../src/core/request-stations-builder'
-import Config from '../../../src/config/config'
+import Config from '../config/config'
 import CityId from '../../../src/requests/city-id'
 import Station from '../../../src/model/geoportal/station'
 
@@ -11,7 +11,7 @@ describe('requestStationsBuilder', () => {
 
   beforeEach(() => {
     cityId = new CityId('11', 221133)
-    requestStations = requestStationsBuilder(null)
+    requestStations = requestStationsBuilder(null, null)
 
     const fakeResponse = {
       data: {
@@ -45,19 +45,19 @@ describe('requestStationsBuilder', () => {
   })
 
   it('accepts a rest client as parameter and uses it', () => {
-    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations = requestStationsBuilder(fakeRestClient, Config.STATIONS_URL)
     requestStations(cityId)
     expect(fakeRestClient.post).toBeCalled()
   })
 
   it('makes a request to a specific URL', () => {
-    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations = requestStationsBuilder(fakeRestClient, Config.STATIONS_URL)
     requestStations(cityId)
     expect(fakeRestClient.post.mock.calls[0][0]).toEqual(Config.STATIONS_URL)
   })
 
   it('uses these options when requesting data', () => {
-    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations = requestStationsBuilder(fakeRestClient, Config.STATIONS_URL)
     requestStations(cityId)
 
     const requestParams = fakeRestClient.post.mock.calls[0][1]
@@ -66,7 +66,7 @@ describe('requestStationsBuilder', () => {
   })
 
   it('parses the response data to build station records', () => {
-    requestStations = requestStationsBuilder(fakeRestClient)
+    requestStations = requestStationsBuilder(fakeRestClient, Config.STATIONS_URL)
     return requestStations(cityId)
       .then(records => {
         expect(records[0]).toBeInstanceOf(Station)
