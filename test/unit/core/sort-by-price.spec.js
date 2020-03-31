@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import sortByPrice from '../../../src/core/sort-by-price'
 
 describe('sortByPrice', () => {

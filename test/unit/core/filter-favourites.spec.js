@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import filterFavourites from '../../../src/core/filter-favourites'
 
 function buildStation (id) {

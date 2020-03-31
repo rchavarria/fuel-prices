@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import StationMapper from '../../../../src/model/geoportal/station-mapper'
 import Station from '../../../../src/model/geoportal/station'
 

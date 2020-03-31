@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import augmentWitFavourites from '../../../src/core/augment-with-favourites'
 import FavouriteStation from '../../../src/model/favourite-station'
 

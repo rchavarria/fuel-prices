@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import CityId from '../../../src/requests/city-id'
 
 describe('CityId', () => {

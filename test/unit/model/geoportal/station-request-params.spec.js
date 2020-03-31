@@ -1,4 +1,4 @@
-/* eslint-env jasmine */
+/* eslint-env jest */
 import CityId from '../../../../src/requests/city-id'
 import StationRequestParams from '../../../../src/model/geoportal/station-request-params'
 
