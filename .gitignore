@@ -1,3 +1,7 @@
+# Configuration data
+config/config.js
+
+# --------------------------------------------- automatically generated ignore
 # PhpStorm
 .idea
 
