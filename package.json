@@ -7,7 +7,8 @@
     "lint": "standard --fix",
     "pretest": "npm run lint",
     "test": "node node_modules/jest/bin/jest.js",
-    "stations": "babel-node src/index.js"
+    "stations": "babel-node src/index.js",
+    "stations:screen": "babel-node src/index-screen.js"
   },
   "repository": {
     "type": "git",
