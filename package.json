@@ -1,6 +1,6 @@
 {
   "name": "fuel-prices",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "muestra una lista de gasolineras que me interesan y \nel precio del gasoil que sirven",
   "main": "src/index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/rchavarria/fuel-prices#readme",
   "dependencies": {
-    "axios": "^0.21.4"
+    "axios": "^0.27.2"
   },
   "devDependencies": {
     "@babel/node": "^7.15.4",
