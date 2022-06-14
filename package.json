@@ -8,7 +8,8 @@
     "pretest": "npm run lint",
     "test": "node node_modules/jest/bin/jest.js",
     "stations": "babel-node src/index.js",
-    "stations:screen": "babel-node src/index-screen.js"
+    "stations:screen": "babel-node src/index-screen.js",
+    "stationstsc": "tsc && node dist/index-screen-ts.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.15.6",
     "jest": "^24.9.0",
     "path": "^0.12.7",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "typescript": "^4.7.3"
   }
 }
