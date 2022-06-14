@@ -1,12 +1,12 @@
 /* eslint-env jest */
-import augmentWitFavourites from '../../../src/core/augment-with-favourites'
+import augmentWithFavourites from '../../../src/core/augment-with-favourites'
 import FavouriteStation from '../../../src/model/favourite-station'
 
 function buildStation (id) {
   return { id }
 }
 
-describe('augmentWitFavourites', () => {
+describe('augmentWithFavourites', () => {
   let fakeStationRecords
   const fakeFavourites = [
     new FavouriteStation(2, 'Desc #2'),
@@ -25,19 +25,19 @@ describe('augmentWitFavourites', () => {
   })
 
   it('works with empty lists', () => {
-    const augmented = augmentWitFavourites([])([])
+    const augmented = augmentWithFavourites([])([])
     expect(augmented).toBeDefined()
   })
 
   it('modifies no stations when there are no favourites', () => {
-    const augmented = augmentWitFavourites([])(fakeStationRecords)
+    const augmented = augmentWithFavourites([])(fakeStationRecords)
     augmented.forEach(station => {
       expect(station.description).not.toBeDefined()
     })
   })
 
   it('modifies those stations present in favourites', () => {
-    const augmented = augmentWitFavourites(fakeFavourites)(fakeStationRecords)
+    const augmented = augmentWithFavourites(fakeFavourites)(fakeStationRecords)
 
     expect(augmented[1].description).toEqual(fakeFavourites[0].label)
     expect(augmented[2].description).toEqual(fakeFavourites[1].label)

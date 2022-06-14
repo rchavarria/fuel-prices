@@ -12,7 +12,7 @@ type Augmenter = (stationRecords: Station[]) => Station[]
  *
  * @returns function Function accepting a list of stations
  */
-export default function augmentWitFavourites (favourites: FavouriteStation[]): Augmenter {
+export default function augmentWithFavourites (favourites: FavouriteStation[]): Augmenter {
   return function (stationRecords: Station[]) {
     const copy = stationRecords.map(s => Object.assign({}, s))
 

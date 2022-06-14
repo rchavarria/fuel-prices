@@ -7,7 +7,7 @@
  *
  * @returns function Function accepting a list of stations
  */
-export default function augmentWitFavourites (favourites) {
+export default function augmentWithFavourites (favourites) {
   return function (stationRecords) {
     const copy = stationRecords.map(s => Object.assign({}, s))
 
