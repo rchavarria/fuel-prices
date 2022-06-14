@@ -9,7 +9,7 @@
     "test": "node node_modules/jest/bin/jest.js",
     "stations": "babel-node src/index.js",
     "stations:screen": "babel-node src/index-screen.js",
-    "stationstsc": "tsc && node dist/index-screen-ts.js"
+    "stationstsc": "tsc && node dist/index-screen.js"
   },
   "repository": {
     "type": "git",
