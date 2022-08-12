@@ -1,5 +1,9 @@
 # Configuration data
 src/config/config.js
+src/config/config.ts
+
+# Compiled code
+dist
 
 # --------------------------------------------- automatically generated ignore
 # PhpStorm
