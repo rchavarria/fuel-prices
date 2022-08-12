@@ -38,7 +38,7 @@ function eachStation (responseStation: IStationResponse) {
   station.label = responseStation.estacion.rotulo
   station.address = responseStation.estacion.direccion
   station.city = responseStation.estacion.localidad
-  station.priceDate = new Date(responseStation.estacion.fechaPvp)
+  station.priceDate = responseStation.estacion.fechaPvp
 
   return station
 }

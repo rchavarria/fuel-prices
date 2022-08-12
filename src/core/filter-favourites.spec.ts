@@ -1,8 +1,9 @@
-/* eslint-env jest */
-import filterFavourites from '../../../src/core/filter-favourites'
+import filterFavourites from './filter-favourites'
+import Station from '../model/geoportal/station'
+import FavouriteStation from '../model/favourite-station'
 
-function buildStation (id) {
-  return { id }
+function buildStation (id): Station {
+  return { id } as Station
 }
 
 describe('filterFavourites', () => {
@@ -13,9 +14,10 @@ describe('filterFavourites', () => {
     buildStation(4),
     buildStation(5)
   ]
+
   const fakeFavourites = [
-    { id: 2 },
-    { id: 3 }
+    { id: 2 } as FavouriteStation,
+    { id: 3 } as FavouriteStation,
   ]
 
   it('works with empty lists', () => {
@@ -35,8 +37,8 @@ describe('filterFavourites', () => {
   })
 
   it('selects from favourites that are present in stations', () => {
-    const extendedFakeFavourites = fakeFavourites.concat({ id: 99 })
-    const filtered = filterFavourites(extendedFakeFavourites)(fakeStationRecords)
+    const anotherFavourite = { id: 99 } as FavouriteStation
+    const filtered = filterFavourites([...fakeFavourites, anotherFavourite])(fakeStationRecords)
     expect(filtered).toHaveLength(fakeFavourites.length)
     expect(filtered[1].id).toEqual(fakeFavourites[1].id)
   })

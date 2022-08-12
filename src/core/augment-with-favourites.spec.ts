@@ -1,6 +1,5 @@
-/* eslint-env jest */
-import augmentWithFavourites from '../../../src/core/augment-with-favourites'
-import FavouriteStation from '../../../src/model/favourite-station'
+import augmentWithFavourites from './augment-with-favourites'
+import FavouriteStation from '../model/favourite-station'
 
 function buildStation (id) {
   return { id }

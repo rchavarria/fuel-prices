@@ -1,6 +1,5 @@
-/* eslint-env jest */
-import csvPrinter from '../../../src/core/csv-printer'
-import Station from '../../../src/model/geoportal/station'
+import csvPrinter from './csv-printer'
+import Station from '../model/geoportal/station'
 
 function buildStation (id, price) {
   const station = new Station()
@@ -40,6 +39,6 @@ describe('printerBuilder', () => {
     printer(fakeStations)
 
     const lineParts = messages[0].split(';')
-    expect(lineParts).toHaveLength(1 + fakeStations.length, 'date + n stations')
+    expect(lineParts).toHaveLength(1 + fakeStations.length) // date + n stations
   })
 })

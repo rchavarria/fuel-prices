@@ -1,6 +1,5 @@
-/* eslint-env jest */
-import StationMapper from '../../../../src/model/geoportal/station-mapper'
-import Station from '../../../../src/model/geoportal/station'
+import StationMapper from './station-mapper'
+import Station from './station'
 
 function buildData (...stations) {
   return {

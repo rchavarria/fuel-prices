@@ -1,6 +1,5 @@
-/* eslint-env jest */
-import render from '../../../src/core/render'
-import TemplateParam from '../../../src/model/template-param'
+import render from './render'
+import TemplateParam from '../model/template-param'
 
 describe('render', () => {
   it('renders no params', () => {

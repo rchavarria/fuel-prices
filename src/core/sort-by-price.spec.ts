@@ -1,14 +1,14 @@
-/* eslint-env jest */
-import sortByPrice from '../../../src/core/sort-by-price'
+import sortByPrice from './sort-by-price'
+import Station from '../model/geoportal/station'
 
 describe('sortByPrice', () => {
   let sorted
   const fakeStations = [
-    { id: 1, price: 150 },
-    { id: 2, price: 100 },
-    { id: 3, price: 500 },
-    { id: 4, price: 900 },
-    { id: 5, price: 200 }
+    { id: 1, price: 150 } as Station,
+    { id: 2, price: 100 } as Station,
+    { id: 3, price: 500 } as Station,
+    { id: 4, price: 900 } as Station,
+    { id: 5, price: 200 } as Station,
   ]
 
   beforeEach(() => {

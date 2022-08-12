@@ -1,5 +1,3 @@
-import CityId from "../../requests/city-id";
-
 /**
  * Station information
  */
@@ -9,7 +7,7 @@ export default class Station {
   public label: string;
   public address: string;
   public city: string;
-  public priceDate: Date;
+  public priceDate: string;
   public description: string;
 
   constructor () {

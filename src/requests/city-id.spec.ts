@@ -1,5 +1,4 @@
-/* eslint-env jest */
-import CityId from '../../../src/requests/city-id'
+import CityId from './city-id'
 
 describe('CityId', () => {
   const province = '28'

@@ -1,8 +1,7 @@
-/* eslint-env jest */
-import requestStationsBuilder from '../../../src/core/request-stations-builder'
-import Config from '../config/config'
-import CityId from '../../../src/requests/city-id'
-import Station from '../../../src/model/geoportal/station'
+import requestStationsBuilder from './request-stations-builder'
+import Config from '../config/config-for-tests'
+import CityId from '../requests/city-id'
+import Station from '../model/geoportal/station'
 
 describe('requestStationsBuilder', () => {
   let cityId,

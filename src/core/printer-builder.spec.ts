@@ -1,8 +1,7 @@
-/* eslint-env jest */
-import printerBuilder from '../../../src/core/printer-builder'
-import Station from '../../../src/model/geoportal/station'
+import printerBuilder from './printer-builder'
+import Station from '../model/geoportal/station'
 
-function buildStation (id, price) {
+function buildStation (id, price): Station {
   const station = new Station()
 
   station.id = id
@@ -36,7 +35,7 @@ describe('printerBuilder', () => {
   it('logs some messages', () => {
     printer(fakeStations)
     expect(fakeLogger.log).toBeCalled()
-    expect(fakeLogger.log.mock.calls).toHaveLength(1 + fakeStations.length, 'header + station lines')
+    expect(fakeLogger.log.mock.calls).toHaveLength(1 + fakeStations.length) // header + station lines
   })
 
   it('logs a header line', () => {
