@@ -4,7 +4,7 @@
   "description": "muestra una lista de gasolineras que me interesan y \nel precio del gasoil que sirven",
   "main": "src/index.js",
   "scripts": {
-    "lint": "standard --fix",
+    "lint": "eslint . --fix --ext .js,.ts",
     "build": "tsc",
     "pretest": "npm run lint",
     "test": "node node_modules/jest/bin/jest.js",
