@@ -4,7 +4,7 @@
 export default class CityId {
   constructor (
     public readonly province: string,
-    public readonly city: number
+    public readonly city: number,
   ) {
   }
 }
