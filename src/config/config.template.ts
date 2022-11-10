@@ -6,7 +6,7 @@ import FavouriteStation from '../model/favourite-station'
  */
 export default {
   // URL to get stations information
-  STATIONS_URL: 'https://geoportalgasolineras.es/rest/busquedaEstaciones',
+  STATIONS_URL: 'https://geoportalgasolineras.es/geoportal/rest/busquedaEstaciones',
 
   // csv output file
   outputFile: 'logs/stations.csv',
