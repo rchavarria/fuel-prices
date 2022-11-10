@@ -1,92 +1,32 @@
-# Peticiones de datos a geoportalgasolineras.es
+# (Nuevas) Peticiones de datos a geoportalgasolineras.es
 
-Las peticiones para obtener datos, son peticiones POSTs a la URL
+Anteriormente, usaba [éstas peticiones](old-requests.md) para obtener
+datos sobre las gasolineras
 
-```
-https://geoportalgasolineras.es/rest/busquedaEstaciones
-```
+Experimentando para ver si podía implementar este proyecto para ser
+ejecutado en el navegador, encontré que hay otra forma
 
-Los parámetros de la petición van en el cuerpo de la petición POST, en formato
-JSON.
+No es realmente un API REST, no es que la documentación sea gloriosa,
+pero bueno, al menos parece que se pueden hacer peticiones REST más
+o menos como si fuera un servicio externo
 
-La cabecera `Accept` de la petición debe indicar `application/json`. Un valor
-válido para dicha cabecera es:
+Voy a considerar que sí es un API REST, llamémosle el 
+*API de Precios Carburantes*: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help
 
-```
-application/json, text/plain, */*
-```
+Parece ser el API del que https://geoportalgasolineras.es toma los datos
 
-## Ejemplos
+En esta misma ayuda se detalla el modelo de datos de las respuestas recibidas
 
-### Gasolineras GALP de Alcalá de Henares
+## Proceso
 
-El cuerpo de la petición es:
+Muy a grandes rasgos, para conocer los precios de una gasolinera,
+seguiría estos pasos:
 
-```json
-{
-    "tipoEstacion": "EESS",
-    "idProvincia": "28",
-    "idMunicipio": 35174,
-    "idProducto": 4,
-    "rotulo": "galp",
-    "eessEconomicas": false,
-    "conPlanesDescuento": false,
-    "horarioInicial": null,
-    "horarioFinal": null,
-    "calle": "",
-    "numero": "",
-    "codPostal": "",
-    "tipoVenta": null,
-    "idOperador": null,
-    "nombrePlan": "",
-    "idTipoDestinatario": null
-}
-```
+1. Listar los municipios de la Provinicia: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help/operations/MunicipiosPorProvincia
+2. Buscar el municipio que me interesa
+3. Listar las estaciones de servicio de ese municipio: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help/operations/PreciosEESSTerrestresFiltroMunicipio
+4. Buscar la gasolinera que me interesa
 
-### Gasolineras de Guadalajara
-
-```json
-{
-    "tipoEstacion": "EESS",
-    "idProvincia": "19",
-    "idMunicipio": 20378,
-    "idProducto": 4,
-    "rotulo": "",
-    "eessEconomicas": false,
-    "conPlanesDescuento": false,
-    "horarioInicial": null,
-    "horarioFinal": null,
-    "calle": "",
-    "numero": "",
-    "codPostal": "",
-    "tipoVenta": null,
-    "idOperador": null,
-    "nombrePlan": "",
-    "idTipoDestinatario": null
-}
-```
-
-### Gasolineras de Pioz
-
-La única diferencia con la de Guadalajara es el `idMunicipio`.
-
-```json
-{
-    "tipoEstacion": "EESS",
-    "idProvincia": "19",
-    "idMunicipio": 20506,
-    "idProducto": 4,
-    "rotulo": "",
-    "eessEconomicas": false,
-    "conPlanesDescuento": false,
-    "horarioInicial": null,
-    "horarioFinal": null,
-    "calle": "",
-    "numero": "",
-    "codPostal": "",
-    "tipoVenta": null,
-    "idOperador": null,
-    "nombrePlan": "",
-    "idTipoDestinatario": null
-}
-```
+Una vez tienes localizadas provincia, municipio y estación de servicio, ya se puede
+automatizar todo un poco más, y que el navegador haga el trabajo sucio
+de buscar y filtrar
