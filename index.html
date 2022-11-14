@@ -49,59 +49,18 @@
     </tbody>
 </table>
 
+<script src="src/js/app.js"></script>
 <script>
-  (async () => {
-    async function listCitiesByProvince(province) {
-      const response = await fetch(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/Listados/MunicipiosPorProvincia/${province}`,
-        {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        })
-
-      return await response.json();
-    }
-
-    async function stationsByCity(city) {
-      const response = await fetch(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroMunicipio/${city}`,
-        {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        })
-
-      return await response.json()
-    }
-
-    async function fetchPrice(cityId, stationId, product) {
-      const stations = await stationsByCity(cityId)
-      const station = stations.ListaEESSPrecio.find(s => s.IDEESS === stationId)
-      return station[product]
-    }
-
-    async function load(cityId, stationId) {
-      const price = await fetchPrice(cityId, stationId, 'Precio Gasoleo A')
-      const element = document.getElementById(`${cityId}-${stationId}`)
-      if (!element) {
-        return
-      }
-
-      element.innerHTML = `<div>${price} €</div>`
-    }
-
-    await load('4280', '3079')
-    await load('4280', '3067')
-    await load('4280', '2929')
-    await load('4280', '4697')
-    await load('4280', '4698')
-    await load('4280', '12721')
-    await load('2945', '8292')
-    await load('3023', '11591')
-  })()
+  window.addEventListener('load', async () => {
+    await window.FuelPrices.load('4280', '3079')
+    await window.FuelPrices.load('4280', '3067')
+    await window.FuelPrices.load('4280', '2929')
+    await window.FuelPrices.load('4280', '4697')
+    await window.FuelPrices.load('4280', '4698')
+    await window.FuelPrices.load('4280', '12721')
+    await window.FuelPrices.load('2945', '8292')
+    await window.FuelPrices.load('3023', '11591')
+  })
 </script>
 </body>
 </html>
