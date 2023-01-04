@@ -1,3 +1,6 @@
+# ignore a JavaScript file for the browser
+src/js/app.js
+
 .eslintrc.js
 
 # ignore Jest config file
