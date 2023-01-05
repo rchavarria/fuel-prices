@@ -8,6 +8,7 @@ import requestStationsBuilder from './core/request-stations-builder'
 import sortById from './core/sort-by-id'
 import FileLogger from './core/file-logger'
 
+// TODO remove this CLI version, I no longer want to keep a CSV file
 Promise.all(Config.cities.map(requestStationsBuilder(axios, Config.STATIONS_URL)))
   .then(allStations => allStations.flat())
   .then(filterFavourites(Config.favourites))

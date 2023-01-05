@@ -1,10 +1,10 @@
 import Config from './config/config';
-import augmentWithFavourites from './core/augment-with-favourites';
-import errorPrinter from './core/error-printer';
-import filterFavourites from './core/filter-favourites';
-import printerBuilder from './core/printer-builder';
-import sortByPrice from './core/sort-by-price';
 import {requestStationsOn} from './minetur/adapters/services/request-stations-on';
+import augmentWithFavourites from './minetur/domain/app/augment-with-favourites';
+import errorPrinter from './minetur/domain/app/error-printer';
+import filterFavourites from './minetur/domain/app/filter-favourites';
+import printerBuilder from './minetur/domain/app/printer-builder';
+import sortByPrice from './minetur/domain/app/sort-by-price';
 
 Promise.all(Config.cities.map(requestStationsOn))
   .then(allStations => allStations.flat())
