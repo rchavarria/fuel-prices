@@ -1,5 +1,5 @@
+import Station from '../model/station';
 import sortByPrice from './sort-by-price'
-import Station from '../model/geoportal/station'
 
 describe('sortByPrice', () => {
   let sorted

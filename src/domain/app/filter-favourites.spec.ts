@@ -1,5 +1,5 @@
+import Station from '../model/station';
 import filterFavourites from './filter-favourites'
-import Station from '../model/geoportal/station'
 import FavouriteStation from '../model/favourite-station'
 
 function buildStation (id): Station {

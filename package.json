@@ -7,7 +7,7 @@
     "lint": "eslint . --fix --ext .js,.ts",
     "build": "tsc",
     "pretest": "npm run lint",
-    "test": "node node_modules/jest/bin/jest.js",
+    "test": "jest",
     "prestations": "npm run lint && npm run build",
     "stations": "node dist/index.js"
   },

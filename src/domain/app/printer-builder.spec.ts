@@ -1,5 +1,5 @@
+import Station from '../model/station';
 import printerBuilder from './printer-builder'
-import Station from '../model/geoportal/station'
 
 function buildStation (id, price): Station {
   const station = new Station()
