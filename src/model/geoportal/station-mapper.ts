@@ -1,26 +1,6 @@
+import {IStationListResponse} from '../../responses/station-list-response';
+import {IStationResponse} from '../../responses/station-response';
 import Station from './station'
-
-/**
- * See complete response on `doc/responses.md`
- */
-interface IStationListResponse {
-  estaciones: IStationResponse[];
-}
-
-/**
- * See complete response on `doc/responses.md`
- */
-interface IStationResponse {
-  id: number;
-  precio: number;
-  estacion: {
-    id: number;
-    rotulo: string;
-    direccion: string;
-    localidad: string;
-    fechaPvp: string;
-  }
-}
 
 /**
  * Extracts information from geoportalgasoliners API to build
