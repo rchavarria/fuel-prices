@@ -1,7 +1,7 @@
-import render from './render'
-import TemplateParam from '../model/template-param'
-import Station from '../model/geoportal/station'
+import Station from '../model/station';
+import TemplateParam from '../model/template-param';
 import {ILogger} from './ILogger'
+import render from './render';
 
 const titleTemplate = `Hay {length} estaciones`
 const stationLineTemplate = `{price}€ en la estación "{description}", {id}, {label} en {address}`

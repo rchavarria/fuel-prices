@@ -1,7 +1,7 @@
-import Station from '../../../model/geoportal/station';
-import CityId from '../../../requests/city-id';
+import CityId from '../../domain/model/city-id';
 import {StationResponse} from '../../domain/model/responses/station-response';
 import {StationsByCityResponse} from '../../domain/model/responses/stations-by-city-response';
+import Station from '../../domain/model/station';
 
 const MINETUR_URL = 'https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroMunicipio/'
 

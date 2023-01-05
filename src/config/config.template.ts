@@ -1,16 +1,10 @@
-import CityId from '../requests/city-id'
-import FavouriteStation from '../model/favourite-station'
+import CityId from '../domain/model/city-id';
+import FavouriteStation from '../domain/model/favourite-station';
 
 /**
  * Template for the configuration object
  */
 export default {
-  // URL to get stations information
-  STATIONS_URL: 'https://geoportalgasolineras.es/geoportal/rest/busquedaEstaciones',
-
-  // csv output file
-  outputFile: 'logs/stations.csv',
-
   // cities to request data
   cities: [
     new CityId('01', 20001),

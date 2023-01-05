@@ -1,4 +1,4 @@
-import Station from '../model/geoportal/station'
+import Station from '../model/station';
 
 /**
  * Sort stations by fuel price

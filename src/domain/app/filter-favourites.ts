@@ -1,5 +1,5 @@
 import FavouriteStation from "../model/favourite-station";
-import Station from "../model/geoportal/station";
+import Station from '../model/station';
 
 type Filter = (records: Station[]) => Station[];
 
