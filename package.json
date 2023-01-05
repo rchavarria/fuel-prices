@@ -11,9 +11,7 @@
     "prestations": "npm run lint && npm run build",
     "stations": "node dist/index.js",
     "prestations:screen": "npm run lint && npm run build",
-    "stations:screen": "node dist/index-screen.js",
-    "prestations:minetur": "npm run lint && npm run build",
-    "stations:minetur": "node dist/index-minetur.js"
+    "stations:screen": "node dist/index-screen.js"
   },
   "repository": {
     "type": "git",
