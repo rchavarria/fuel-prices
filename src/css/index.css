@@ -32,3 +32,7 @@ tbody tr:nth-child(even) td {
 tbody tr:nth-child(odd) td {
     background-color: rgb(245, 245, 245);
 }
+
+tbody td.price {
+    text-align: right;
+}
