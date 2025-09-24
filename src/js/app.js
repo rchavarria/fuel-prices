@@ -28,6 +28,10 @@
   async function fetchPrice(cityId, stationId, product) {
     const stations = await stationsByCity(cityId)
     const station = stations.ListaEESSPrecio.find(s => s.IDEESS === stationId)
+    if (!station) {
+      return 'N/A'
+    }
+
     return station[product]
   }
 
