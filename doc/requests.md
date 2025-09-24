@@ -22,11 +22,11 @@ En esta misma ayuda se detalla el modelo de datos de las respuestas recibidas
 Muy a grandes rasgos, para conocer los precios de una gasolinera,
 seguiría estos pasos:
 
-1. Listar los municipios de la Provinicia: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help/operations/MunicipiosPorProvincia
+1. Listar los municipios de la Provincia: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help/operations/MunicipiosPorProvincia
 2. Buscar el municipio que me interesa
 3. Listar las estaciones de servicio de ese municipio: https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help/operations/PreciosEESSTerrestresFiltroMunicipio
 4. Buscar la gasolinera que me interesa
 
-Una vez tienes localizadas provincia, municipio y estación de servicio, ya se puede
+Una vez tienes localizadas: provincia, municipio y estación de servicio, ya se puede
 automatizar todo un poco más, y que el navegador haga el trabajo sucio
 de buscar y filtrar
