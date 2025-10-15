@@ -17,28 +17,8 @@
     </thead>
     <tbody>
     <tr>
-        <td>Barata de Alcampo</td>
-        <td id="4280-3079" class="price"></td>
-    </tr>
-    <tr>
-        <td>Alcalá: Galp: rotonda Meco</td>
-        <td id="4280-3067" class="price"></td>
-    </tr>
-    <tr>
-        <td>Alcobendas: Galp: Av Frenando Alonso</td>
-        <td id="4281-15677" class="price"></td>
-    </tr>
-    <tr>
-        <td>Alcobendas: Galp: Antigua N-I</td>
-        <td id="4281-3191" class="price"></td>
-    </tr>
-    <tr>
-        <td>Pioz: Repsol</td>
-        <td id="3023-11591" class="price"></td>
-    </tr>
-    <tr>
-        <td>Alcalá: Galp: antigüo Quirón</td>
-        <td id="4280-2929" class="price"></td>
+        <td>Alcalá: Galp: rotonda Fiat</td>
+        <td id="4280-12721" class="price"></td>
     </tr>
     <tr>
         <td>Alcalá: Galp: vía de servicio N-II</td>
@@ -49,16 +29,40 @@
         <td id="4280-4698" class="price"></td>
     </tr>
     <tr>
-        <td>Alcalá: Galp: rotonda Fiat</td>
-        <td id="4280-12721" class="price"></td>
+        <td>Alcalá: Galp: rotonda Meco</td>
+        <td id="4280-3067" class="price"></td>
+    </tr>
+    <tr>
+        <td>Alcalá: Galp: antigüo Quirón</td>
+        <td id="4280-2929" class="price"></td>
+    </tr>
+    <tr>
+        <td>Cobeña: Galp</td>
+        <td id="4318-11328" class="price"></td>
+    </tr>
+    <tr>
+        <td>Pioz: Repsol</td>
+        <td id="3023-11591" class="price"></td>
+    </tr>
+    <tr>
+        <td>Alcobendas: Galp: Av Frenando Alonso</td>
+        <td id="4281-15677" class="price"></td>
+    </tr>
+    <tr>
+        <td>Alcobendas: Galp: Antigua N-I</td>
+        <td id="4281-3191" class="price"></td>
+    </tr>
+    <tr>
+        <td>Alcobendas: Galp: Av Valdelaparra</td>
+        <td id="4281-3076" class="price"></td>
     </tr>
     <tr>
         <td>Guadalajara: Galp: rotonda Bici</td>
         <td id="2945-8292" class="price"></td>
     </tr>
     <tr>
-        <td>Alcobendas: Galp: Av Valdelaparra</td>
-        <td id="4281-3076" class="price"></td>
+        <td>Barata de Alcampo</td>
+        <td id="4280-3079" class="price"></td>
     </tr>
     </tbody>
 </table>
@@ -66,14 +70,20 @@
 <script src="src/js/app.js"></script>
 <script>
   window.addEventListener('load', async () => {
+    // alcalá
     await window.FuelPrices.load('4280', '3079')
     await window.FuelPrices.load('4280', '3067')
     await window.FuelPrices.load('4280', '2929')
     await window.FuelPrices.load('4280', '4697')
     await window.FuelPrices.load('4280', '4698')
     await window.FuelPrices.load('4280', '12721')
+    // cobeña
+    await window.FuelPrices.load('4318', '11328')
+    // guada
     await window.FuelPrices.load('2945', '8292')
+    // pioz
     await window.FuelPrices.load('3023', '11591')
+    // alcobendas
     await window.FuelPrices.load('4281', '15677')
     await window.FuelPrices.load('4281', '3191')
     await window.FuelPrices.load('4281', '3076')
